@@ -4,9 +4,9 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = {
-  default: "bg-[#4c1d95] text-[#ede8ff] hover:bg-[#5b21b6]",
-  outline: "border border-[#1e1640] text-[#ddd6fe] hover:bg-[#0d0b1a]",
-  ghost:   "text-[#ddd6fe] hover:bg-[#110f1e]",
+  default: "bg-[#4c1d95] text-[#f0f0f0] hover:bg-[#5b21b6]",
+  outline: "border border-[#222222] text-[#a0a0a0] hover:bg-[#101010]",
+  ghost:   "text-[#a0a0a0] hover:bg-[#181818]",
   destructive: "bg-[#ef4444] text-white hover:bg-[#dc2626]",
 };
 

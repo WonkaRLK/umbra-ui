@@ -19,7 +19,7 @@ interface ToastContextValue {
 const ToastContext = React.createContext<ToastContextValue | null>(null);
 
 const variantStyles: Record<ToastVariant, string> = {
-  default: "border-[#1e1640]",
+  default: "border-[#222222]",
   success: "border-[#22c55e]/30",
   error:   "border-[#ef4444]/30",
   info:    "border-[#a855f7]/30",
@@ -53,14 +53,14 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 40 }}
               className={cn(
-                "flex items-start gap-3 rounded-[12px] border bg-[#0d0b1a] px-4 py-3 shadow-lg min-w-[280px]",
+                "flex items-start gap-3 rounded-[12px] border bg-[#101010] px-4 py-3 shadow-lg min-w-[280px]",
                 variantStyles[t.variant ?? "default"]
               )}
             >
               <span className={cn("mt-1 h-2 w-2 shrink-0 rounded-full", variantDot[t.variant ?? "default"])} />
               <div>
-                <p className="text-sm font-medium text-[#ddd6fe]">{t.message}</p>
-                {t.description && <p className="text-xs text-[#7c6f9e] mt-0.5">{t.description}</p>}
+                <p className="text-sm font-medium text-[#a0a0a0]">{t.message}</p>
+                {t.description && <p className="text-xs text-[#505050] mt-0.5">{t.description}</p>}
               </div>
             </motion.div>
           ))}
