@@ -664,13 +664,12 @@ function TerminalDemo() {
 export function Hero() {
   return (
     <section
-      className="relative min-h-screen bg-[#050505] overflow-hidden"
-      style={{ display: "grid", gridTemplateColumns: "54fr 46fr" }}
+      className="relative min-h-screen bg-[#050505] overflow-hidden grid grid-cols-1 md:grid-cols-[54fr_46fr]"
     >
       {/* ── LEFT: Editorial content ── */}
-      <div className="relative flex flex-col justify-center px-14 py-24 bg-[#050505] z-10">
-        {/* Thin separator */}
-        <div className="absolute right-0 inset-y-0 w-px" style={{ background: "linear-gradient(to bottom, transparent 5%, #111 30%, #111 70%, transparent 95%)" }} />
+      <div className="relative flex flex-col justify-center px-6 py-20 sm:px-10 md:px-14 md:py-24 bg-[#050505] z-10">
+        {/* Thin separator — only on desktop */}
+        <div className="hidden md:block absolute right-0 inset-y-0 w-px" style={{ background: "linear-gradient(to bottom, transparent 5%, #111 30%, #111 70%, transparent 95%)" }} />
 
         {/* Headline */}
         <div className="mb-10 space-y-[0.04em]">
@@ -724,7 +723,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.72 }}
-          className="text-[13px] text-[#303030] leading-relaxed max-w-[280px] mb-9"
+          className="text-[13px] text-[#303030] leading-relaxed max-w-[320px] md:max-w-[280px] mb-9"
         >
           40 componentes dark luxury.<br />
           React + Tailwind v4.<br />
@@ -758,7 +757,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.05 }}
-          className="flex items-stretch mt-16 pt-8 border-t border-[#111]"
+          className="flex items-stretch mt-10 md:mt-16 pt-8 border-t border-[#111]"
         >
           {[["40", "componentes"], ["0", "deps extra"], ["v4", "Tailwind"]].map(([val, label], i) => (
             <div
@@ -777,8 +776,8 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* ── RIGHT: Terminal demo ── */}
-      <div className="relative overflow-hidden">
+      {/* ── RIGHT: Terminal demo — hidden on mobile ── */}
+      <div className="hidden md:block relative overflow-hidden">
         <TerminalDemo />
       </div>
 
