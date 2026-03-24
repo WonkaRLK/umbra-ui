@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface DropdownItem {
-  label: string;
+  label?: string;
   icon?: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;

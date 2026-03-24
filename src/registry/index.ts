@@ -290,7 +290,8 @@ export default function Example() {
     preview: React.createElement(Collapsible, {
       trigger: React.createElement("div", { style: { padding: "8px 12px", background: "#181818", borderRadius: 8, color: "#a0a0a0", fontSize: 13 } }, "Ver detalles ?"),
       defaultOpen: true,
-    }, React.createElement("p", { style: { fontSize: 13, color: "#505050", paddingTop: 8 } }, "Contenido expandible.")),
+      children: React.createElement("p", { style: { fontSize: 13, color: "#505050", paddingTop: 8 } }, "Contenido expandible."),
+    }),
     code: `import { Collapsible } from "@/components/umbra/collapsible";
 
 export default function Example() {

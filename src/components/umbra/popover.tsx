@@ -27,7 +27,7 @@ const alignClasses: Record<PopoverAlign, string> = {
   end: "right-0",
 };
 
-const motionVariants: Record<PopoverSide, { initial: object }> = {
+const motionVariants: Record<PopoverSide, { initial: Record<string, number> }> = {
   bottom: { initial: { opacity: 0, scale: 0.95, y: -4 } },
   top: { initial: { opacity: 0, scale: 0.95, y: 4 } },
   right: { initial: { opacity: 0, scale: 0.95, x: -4 } },

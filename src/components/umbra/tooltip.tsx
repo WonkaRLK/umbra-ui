@@ -19,7 +19,7 @@ const positionClass: Record<TooltipSide, string> = {
   right: "left-full ml-1.5 top-1/2 -translate-y-1/2",
 };
 
-const motionInitial: Record<TooltipSide, object> = {
+const motionInitial: Record<TooltipSide, Record<string, number>> = {
   top: { opacity: 0, scale: 0.9, y: 4 },
   bottom: { opacity: 0, scale: 0.9, y: -4 },
   left: { opacity: 0, scale: 0.9, x: 4 },
@@ -28,7 +28,7 @@ const motionInitial: Record<TooltipSide, object> = {
 
 export function Tooltip({ content, children, side = "top", delay = 400 }: TooltipProps) {
   const [visible, setVisible] = React.useState(false);
-  const timerRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const show = () => {
     timerRef.current = setTimeout(() => setVisible(true), delay);
@@ -38,22 +38,23 @@ export function Tooltip({ content, children, side = "top", delay = 400 }: Toolti
     setVisible(false);
   };
 
-  const child = React.cloneElement(children, {
-    onMouseEnter: (e: React.MouseEvent) => {
+  const typedChildren = children as React.ReactElement<React.HTMLAttributes<HTMLElement>>;
+  const child = React.cloneElement(typedChildren, {
+    onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
       show();
-      children.props.onMouseEnter?.(e);
+      typedChildren.props.onMouseEnter?.(e);
     },
-    onMouseLeave: (e: React.MouseEvent) => {
+    onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
       hide();
-      children.props.onMouseLeave?.(e);
+      typedChildren.props.onMouseLeave?.(e);
     },
-    onFocus: (e: React.FocusEvent) => {
+    onFocus: (e: React.FocusEvent<HTMLElement>) => {
       show();
-      children.props.onFocus?.(e);
+      typedChildren.props.onFocus?.(e);
     },
-    onBlur: (e: React.FocusEvent) => {
+    onBlur: (e: React.FocusEvent<HTMLElement>) => {
       hide();
-      children.props.onBlur?.(e);
+      typedChildren.props.onBlur?.(e);
     },
   });
 
